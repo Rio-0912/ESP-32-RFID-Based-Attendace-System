@@ -1,5 +1,5 @@
 from machine import Pin, SPI
-from mfrx	522 import MFRC522
+from mfrc522 import MFRC522
 from time import sleep_ms, ticks_ms, ticks_diff
 import network
 import urequests
@@ -137,7 +137,7 @@ current_uid = None
 
 def send_card_data(uid):
     try:
-        response = urequests.post("http://192.168.0.107:3002/data",
+        response = urequests.post("http://192.168.0.101:3002/data",
                                  json={"card_id": uid},
                                  headers={"Content-Type": "application/json"})
         print("Data sent:", response.text)

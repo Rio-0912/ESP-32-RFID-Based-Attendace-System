@@ -18,6 +18,7 @@ import { Input } from "@/components/ui/input";
 import axios from "axios";
 import React, { useState } from "react";
 import { RingLoader } from "react-spinners";
+import toast from "react-hot-toast";
 
 export function LoginForm({ className, ...props }) {
   const [loading, setLoading] = useState(false);
@@ -38,12 +39,18 @@ export function LoginForm({ className, ...props }) {
       if (res.status === 200 && res.data.uid != null) {
         localStorage.setItem("uid", res.data.uid);
         localStorage.setItem("name", res.data.name);
-        alert("Login Successful! Welcome " + res.data.name);
-        window.location.href = "/dashboard";
+        toast.success(`Welcome back, ${res.data.name}! 🎉`);
+        setTimeout(() => {
+          window.location.href = "/dashboard";
+        }, 1000);
       }
     } catch (error) {
       console.error("Login failed:", error);
-      alert("Login failed. Check your credentials.");
+      if (error.response?.status === 401) {
+        toast.error("Invalid credentials. Please try again.");
+      } else {
+        toast.error("Something went wrong. Please try again later.");
+      }
     } finally {
       setLoading(false);
     }

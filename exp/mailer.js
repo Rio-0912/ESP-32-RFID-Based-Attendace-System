@@ -39,7 +39,5 @@ async function sendMail(to, subject, name, course_name, date, time, attendance_r
     }
 }
 
-sendMail('rehanansari0912@gmail.com', 'Attendance Confirmed', 'Rehan Ansari', 'Mathematics', '2024-10-01', '10:00 AM', 85, 5);
-
-// export the module
+// Export the module
 module.exports = sendMail;
