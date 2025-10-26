@@ -8,8 +8,8 @@ import gc
 # =============================
 # WIFI SETUP
 # =============================
-SSID = "imp { Wifi } from internet"
-PASSWORD = "rio@0912"
+SSID = "*****"
+PASSWORD = "******"
 
 def connect_wifi():
     wlan = network.WLAN(network.STA_IF)
